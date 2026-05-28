@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="SHANTI at the University of Virginia - Sciences, Humanities and Arts Network of Technological Initiatives: SHANTI promotes innovation in the humanities, social sciences and arts at the University of Virginia through supporting the application of advanced technologies in research, teaching, publication and engagement across the entire community." />
+	<meta name="keywords" content="SHANTI at the University of Virginia - Sciences, Humanities and Arts Network of Technological Initiatives" />
+	<title><%= head_title %></title>
+<%= favicon_link_tag 'shanti_sarvaka_theme/favicons/favicon.ico' %>
+<%= favicon_link_tag 'shanti_sarvaka_theme/favicons/favicon.ico', rel: 'icon', sizes: '16x16 32x32 64x64' %>
+<%= favicon_link_tag 'shanti_sarvaka_theme/favicons/favicon-196.png', rel: 'icon', sizes: '196x196', type: 'image/png' %>
+<%= favicon_link_tag 'shanti_sarvaka_theme/favicons/favicon-160.png', rel: 'icon', sizes: '160x160', type: 'image/png' %>
+<%= favicon_link_tag 'shanti_sarvaka_theme/favicons/favicon-96.png', rel: 'icon', sizes: '96x96', type: 'image/png' %>
+<%= favicon_link_tag 'shanti_sarvaka_theme/favicons/favicon-64.png', rel: 'icon', sizes: '64x64', type: 'image/png' %>
+<%= favicon_link_tag 'shanti_sarvaka_theme/favicons/favicon-32.png', rel: 'icon', sizes: '32x32', type: 'image/png' %>
+<%= favicon_link_tag 'shanti_sarvaka_theme/favicons/favicon-16.png', rel: 'icon', sizes: '16x16', type: 'image/png' %>
+<%= favicon_link_tag 'shanti_sarvaka_theme/favicons/favicon-152.png', rel: 'apple-touch-icon', sizes: '152x152', type: 'image/png' %>
+<%= favicon_link_tag 'shanti_sarvaka_theme/favicons/favicon-144.png', rel: 'apple-touch-icon', sizes: '144x144', type: 'image/png' %>
+<%= favicon_link_tag 'shanti_sarvaka_theme/favicons/favicon-120.png', rel: 'apple-touch-icon', sizes: '120x120', type: 'image/png' %>
+<%= favicon_link_tag 'shanti_sarvaka_theme/favicons/favicon-76.png', rel: 'apple-touch-icon', sizes: '76x76', type: 'image/png' %>
+<%= favicon_link_tag 'shanti_sarvaka_theme/favicons/favicon-72.png', rel: 'apple-touch-icon', sizes: '72x72', type: 'image/png' %>
+<%= favicon_link_tag 'shanti_sarvaka_theme/favicons/favicon-57.png', rel: 'apple-touch-icon', type: 'image/png' %>
+<meta name="msapplication-TileColor" content="#da532c" />
+<meta name="msapplication-TileImage" content="<%= image_path 'shanti_sarvaka_theme/favicons/favicon-144.png' %>" />
+<meta name="msapplication-config" content="<%= image_path 'shanti_sarvaka_theme/favicons/browserconfig.xml' %>" />
+<meta name="theme-color" content="#ffffff"  />
+<!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5GRMG80Z2F"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5GRMG80Z2F');
+    </script>
+<%= stylesheet_link_tag(*(stylesheet_files + [media: 'all', 'data-turbolinks-track' => true])) %>
+<%= javascript_include_tag(*(javascript_files + ['data-turbolinks-track' => true])) %>
+<%= csrf_meta_tags %>
+</head>
+<body<%= " class=\"#{body_class}\"".html_safe if !body_class.nil? %><%= " id=\"#{body_id}\"".html_safe if !body_id.nil? %>>
+  <!--[if lte IE 8]><p class="progressive">It appears you are using an older browser. Please consider a upgrading to a modern version of your browser to best appreciate this website. Thank you -</p><![endif]-->
+  <div class="wrap-all">
+    <span class="sr-only"><a href=".main-content">Skip to main content</a> <a href="#search-flyout">Skip to search</a></span>
+    <!-- Header Region -->
+	<div class="site-banner">
+      <div class="navbar navbar-default"> 
+	    <nav class="navbar-buttons">
+	      <span class="menu-icon menu-toggle"><a href="#"><span class="sr-only">Main Menu</span><span class="icon shanticon-menu"></span></a></span><!-- desktop > 768 drilldown menu : main-menu -->
+	      <span class="menu-explore menu-exploretoggle"><a href="#"><span>Explore</span><span class="icon shanticon-directions"></span></a></span><!-- mobile < 768 : collections -->
+	    </nav>
+	    <h1 class="navbar-header">
+          <%= link_to root_path, class: 'logo-brand navbar-brand', title: 'NOD' do %>
+          <span class="icon nod-logo"></span><span class="mandala">
+            NOD
+          </span>
+        <% end %>
+        <%= link_to root_path, class: 'navbar-brand', title: 'KMAPS' do %>
+          <span class='site-slogan'><%= ts('app.short') %> Editing (<%= is_admin_area? ? "Edit" : "View" %> Mode)</span>
+        <% end %>
+	    </h1>
+	    <!-- HEADER REGION -->
+	    <nav id="sarvaka-header" class="region navbar-collapse collapse navtop"> <!-- desktop display > 768 -->
+	      <form class="form">
+	        <fieldset>
+	          <ul class="nav navbar-nav navbar-right">
+				<!-- If admin puts blocks in	header, render here -->
+                <li id="collexplink" class="explore"><a href="#">EXPLORE<i class="icon shanticon-directions"></i></a></li>
+                <li class="dropdown lang highlight" id="block-locale-language">
+<%                current_language = I18n.locale
+                  language_metadata = LANGUAGES[current_language]
+                  current_lang_title = language_metadata.nil? ? current_language.to_s : ts(language_metadata[:title], :locale => current_language) %>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span><%= current_lang_title %></span><i class="icon shanticon-arrowselect"></i></a>
+                  <ul class="dropdown-menu">
+<%=                 render 'main/language_list' %>
+                  </ul>
+                </li>
+	          </ul>
+	        </fieldset>  
+	      </form>           
+	    </nav>
+	    <!-- End of HEADER region -->
+      </div>
+      <!-- include shanti-explore-menu if it exists -->
+      <section class="container opencollect collections"><nav class="row" role="navigation"><div class="col-sm-12 col-md-10 col-md-offset-1"> <h4 class="collections-title">EXPLORE</h4><div class="shanti-collections">
+<%=     render 'main/collections_list' %>        
+	  </div></div><button class="close"> <span class="icon shanticon-cancel"></span> </button></nav>
+	  </section>
+    </div>
