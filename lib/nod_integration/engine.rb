@@ -9,9 +9,9 @@ module NodIntegration
       ShantiIntegrationHelper.prepend NodIntegration::ShantiIntegrationHelperOverrides
       
       # overriding authentication helpers (included in application_controller) defined in ShantiIntegration
-      require_dependency 'application_controller'
+      require_dependency "authenticated_system/sessions_controller"
       require_dependency 'nod_integration/authentication_overrides'
-      ApplicationController.prepend NodIntegration::AuthenticationOverrides
+      AuthenticatedSystem::SessionsController.prepend NodIntegration::AuthenticationOverrides
     end
   end
 end
